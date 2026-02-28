@@ -1,3 +1,11 @@
+
+
+<img width="1895" height="906" alt="sample1" src="https://github.com/user-attachments/assets/d19b6941-d06d-438e-92d5-eb412aced43c" />
+
+
+
+
+
 🏆 Hackathon Spotlight: 1st Prize Winner
 Project Name: DocxCheck — Document Similarity & AI Intelligence
 
