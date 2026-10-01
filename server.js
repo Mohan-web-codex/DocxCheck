@@ -8,6 +8,13 @@
  */
 
 require('dotenv').config();
+
+// Security Check
+if (!process.env.JWT_SECRET) {
+    console.error('FATAL ERROR: JWT_SECRET is not defined.');
+    process.exit(1);
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -141,7 +148,7 @@ app.post('/api/auth/verify-otp', async (req, res) => {
         user.otpExpires = null;
         await user.save();
 
-        const token = jwt.sign({ _id: user._id, phone: user.phone }, process.env.JWT_SECRET || 'fallback_secret_key', { expiresIn: '7d' });
+        const token = jwt.sign({ _id: user._id, phone: user.phone }, process.env.JWT_SECRET, { expiresIn: '7d' });
         res.json({ message: 'Login successful', token });
     } catch (error) {
         res.status(500).json({ error: 'Verification failed' });
