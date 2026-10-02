@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+:root {
+  /* Master Design Tokens from MASTER.md */
+  --color-canvas: #F6F7F9;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #EEF1F5;
+  --color-border: #D9DEE7;
+  --color-border-subtle: #E8ECF2;
+  --color-text: #172033;
+  --color-text-muted: #5E687A;
+  --color-primary: #3547A5;
+  --color-primary-hover: #293A91;
+  --color-primary-soft: #E9ECFF;
+  --color-success: #16794B;
+  --color-warning: #946200;
+  --color-danger: #B42318;
+  --color-info: #176B87;
+
+  /* Document Comparison Tokens (MASTER.md) */
+  --color-match-exact: #2563EB;
+  --color-match-exact-bg: #EFF6FF;
+  --color-match-exact-border: #BFDBFE;
+
+  --color-match-near: #7C3AED;
+  --color-match-near-bg: #F5F3FF;
+  --color-match-near-border: #DDD6FE;
+
+  --color-match-semantic: #0D9488;
+  --color-match-semantic-bg: #F0FDFA;
+  --color-match-semantic-border: #99F6E4;
+
+  --color-match-citation: #475569;
+  --color-match-citation-bg: #F8FAFC;
+  --color-match-citation-border: #E2E8F0;
+
+  --color-match-ocr: #D97706;
+  --color-match-ocr-bg: #FFFBEB;
+  --color-match-ocr-border: #FDE68A;
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* 8px Spatial Rhythm Grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+}
+
+@theme {
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-surface-subtle: var(--color-surface-subtle);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-default: var(--color-border);
+  --color-text-main: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-soft: var(--color-primary-soft);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+
+  --color-match-exact: var(--color-match-exact);
+  --color-match-exact-bg: var(--color-match-exact-bg);
+  --color-match-exact-border: var(--color-match-exact-border);
+
+  --color-match-near: var(--color-match-near);
+  --color-match-near-bg: var(--color-match-near-bg);
+  --color-match-near-border: var(--color-match-near-border);
+
+  --color-match-semantic: var(--color-match-semantic);
+  --color-match-semantic-bg: var(--color-match-semantic-bg);
+  --color-match-semantic-border: var(--color-match-semantic-border);
+
+  --color-match-citation: var(--color-match-citation);
+  --color-match-citation-bg: var(--color-match-citation-bg);
+  --color-match-citation-border: var(--color-match-citation-border);
+
+  --color-match-ocr: var(--color-match-ocr);
+  --color-match-ocr-bg: var(--color-match-ocr-bg);
+  --color-match-ocr-border: var(--color-match-ocr-border);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Accessibility & Base Typography */
+html,
+body {
+  height: 100%;
+  background-color: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular Numerals for metrics, page counts, scores, and dates */
+.num-tabular,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* WCAG 2.2 AA High-Contrast Focus Ring */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-canvas), 0 0 0 4px var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+/* Custom Scrollbar for dense document and split-pane viewers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Match Evidence Badges & Highlights */
+.badge-exact {
+  background-color: var(--color-match-exact-bg);
+  color: var(--color-match-exact);
+  border: 1px solid var(--color-match-exact-border);
+}
+
+.badge-near {
+  background-color: var(--color-match-near-bg);
+  color: var(--color-match-near);
+  border: 1px solid var(--color-match-near-border);
+}
+
+.badge-semantic {
+  background-color: var(--color-match-semantic-bg);
+  color: var(--color-match-semantic);
+  border: 1px solid var(--color-match-semantic-border);
+}
+
+.badge-citation {
+  background-color: var(--color-match-citation-bg);
+  color: var(--color-match-citation);
+  border: 1px solid var(--color-match-citation-border);
+}
+
+.badge-ocr {
+  background-color: var(--color-match-ocr-bg);
+  color: var(--color-match-ocr);
+  border: 1px solid var(--color-match-ocr-border);
+}

@@ -20,7 +20,30 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 // 1. CONFIGURATION & SETUP
 // ==========================================
 const app = express();
-app.use(cors());
+
+// Hardened CORS Configuration for Next.js App Integration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked: Origin ${origin} not allowed`));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    credentials: true,
+    maxAge: 86400,
+  })
+);
+app.options('*', cors());
 app.use(express.json());
 
 // Initialize AI
